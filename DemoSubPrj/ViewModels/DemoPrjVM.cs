@@ -21,6 +21,8 @@ namespace DemoSubPrj.ViewModels
             ItemSrcList =_service.GetDataService();
         }
         public SubPrjM _models { get; set; }
+        public SubPrjService _service { get; set; }
+
 
         public List<SubPrjM> _itemsrclist;
 
@@ -124,18 +126,8 @@ namespace DemoSubPrj.ViewModels
             }
         }
 
-        public SubPrjService _service { get; set; }
 
         public ICommand AddBtnCmd => new ActionCommand(AddPop);
-
-        public void AddPop()
-        {
-           Addpopup = new AddPop();
-           Addpopup.DataContext = this;
-           Addpopup.ShowDialog();
-            ClearVals();
-
-        }
 
         public AddPop Addpopup { get; set; }
 
@@ -146,6 +138,15 @@ namespace DemoSubPrj.ViewModels
 
         public ICommand DeleteBtnCmd => new ActionCommand(DeleteFun);
 
+
+        public void AddPop()
+        {
+            Addpopup = new AddPop();
+            Addpopup.DataContext = this;
+            Addpopup.ShowDialog();
+            ClearVals();
+
+        }
 
 
         public void DeleteFun()

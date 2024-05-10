@@ -47,6 +47,9 @@
     <Reference Include="Syncfusion.SfInput.WPF, Version=25.2462.3.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.SfInput.WPF.25.2.3\lib\net462\Syncfusion.SfInput.WPF.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfTextInputLayout.WPF, Version=25.2462.3.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.SfTextInputLayout.WPF.25.2.3\lib\net462\Syncfusion.SfTextInputLayout.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Shared.WPF, Version=25.2462.3.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Shared.WPF.25.2.3\lib\net462\Syncfusion.Shared.WPF.dll</HintPath>
     </Reference>
