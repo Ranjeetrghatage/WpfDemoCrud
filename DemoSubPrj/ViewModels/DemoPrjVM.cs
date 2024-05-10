@@ -114,7 +114,7 @@ namespace DemoSubPrj.ViewModels
             else
             {
                 List<SubPrjM> FilteredList = new List<SubPrjM>();
-                foreach (var item in ItemSrcList)
+                foreach (var item in _service.GetDataService())
                 {
                     bool property = item.GetType().GetProperty(SelectedSearchComboBoxValue).GetValue(item, null).ToString().Contains(SearchTextBox);
                     if (property)
