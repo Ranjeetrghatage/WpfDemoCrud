@@ -1,0 +1,88 @@
+﻿<Window x:Class="DemoSubPrj.Views.AddPop"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoSubPrj.Views"
+        xmlns:vm1="clr-namespace:DemoSubPrj.ViewModels"
+        mc:Ignorable="d"
+        Title="AddPop" Height="450" Width="800" WindowStyle="ToolWindow">
+    <Window.DataContext>
+        <vm1:DemoPrjVM/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Height" Value="40"/>
+
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Enter Employee Name" Grid.Row="0"/>
+        <Label Content="Enter Employee Age" Grid.Row="1"/>
+        <Label Content="Enter Employee Gender" Grid.Row="2"/>
+        <Label Content="Enter Employee Department" Grid.Row="3"/>
+        <Label Content="Enter Employee Designation" Grid.Row="4"/>
+        <Label Content="Enter Employee Phone" Grid.Row="5"/>
+        <Label Content="Enter Employee Salary" Grid.Row="6"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding _models.Emp_name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding _models.Emp_age,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox  Grid.Row="2" Grid.Column="1" Margin="10 0 10 0"  Height="30" FontSize="16" SelectedItem="{Binding ComboSelected,UpdateSourceTrigger=PropertyChanged}" >
+            <ComboBoxItem Content="Please Select any one option" />
+            <ComboBoxItem Content="Male" />
+            <ComboBoxItem Content="Female" />
+        </ComboBox>
+        <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding _models.Emp_department,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding _models.Emp_designation,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding _models.Emp_pno,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding _models.Emp_salary,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Content="Save"
+        FontSize="18" VerticalContentAlignment="Top" HorizontalAlignment="Center" 
+        Grid.Column="1"
+        Grid.Row="7"
+        Height="40"
+        Width="100"
+        Command="{Binding AddSaveBtnCmd}"
+        Background="#007ACC"
+        Foreground="White"
+        BorderThickness="0"
+        Padding="10"
+        Margin="300 0 0 0">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <Button.Effect>
+                <DropShadowEffect Color="#4D000000"
+                          Direction="0"
+                          ShadowDepth="2"
+                          BlurRadius="2"/>
+            </Button.Effect>
+        </Button>
+    </Grid>
+</Window>
