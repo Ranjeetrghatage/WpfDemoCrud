@@ -22,6 +22,15 @@ namespace DemoSubPrj.ViewModels
         }
         public SubPrjM _models { get; set; }
         public SubPrjService _service { get; set; }
+        public AddPop Addpopup { get; set; }
+
+        public ICommand AddBtnCmd => new ActionCommand(AddPop);
+
+        public ICommand AddSaveBtnCmd => new ActionCommand(SaveFun);
+
+        public ICommand EditBtnCmd => new ActionCommand(EditPop);
+
+        public ICommand DeleteBtnCmd => new ActionCommand(DeleteFun);
 
 
         public List<SubPrjM> _itemsrclist;
@@ -127,17 +136,7 @@ namespace DemoSubPrj.ViewModels
         }
 
 
-        public ICommand AddBtnCmd => new ActionCommand(AddPop);
-
-        public AddPop Addpopup { get; set; }
-
-
-        public ICommand AddSaveBtnCmd => new ActionCommand(AddSaveFun);
-
-        public ICommand EditBtnCmd => new ActionCommand(EditPop);
-
-        public ICommand DeleteBtnCmd => new ActionCommand(DeleteFun);
-
+     
 
         public void AddPop()
         {
@@ -174,7 +173,7 @@ namespace DemoSubPrj.ViewModels
         }
 
 
-        public void AddSaveFun()
+        public void SaveFun()
         {
             if (_models.Emp_id == 0)
             {

@@ -157,7 +157,7 @@
                     <syncfusion:ComboBoxItemAdv Content="Emp_gender"></syncfusion:ComboBoxItemAdv>
                     <syncfusion:ComboBoxItemAdv Content="Emp_department"></syncfusion:ComboBoxItemAdv>
                     <syncfusion:ComboBoxItemAdv Content="Emp_designation"></syncfusion:ComboBoxItemAdv>
-                    <syncfusion:ComboBoxItemAdv Content="Emp_phone"></syncfusion:ComboBoxItemAdv>
+                    <syncfusion:ComboBoxItemAdv Content="Emp_pno"></syncfusion:ComboBoxItemAdv>
                     <syncfusion:ComboBoxItemAdv Content="Emp_salary"></syncfusion:ComboBoxItemAdv>
 
                     <syncfusion:ComboBoxAdv.Style>
