@@ -6,7 +6,7 @@
         xmlns:uc="clr-namespace:DemoSubPrj.UserControls;assembly=DemoSubPrj"
         xmlns:local="clr-namespace:DemoProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowState="Maximized">
+        Title="DemoProject" Height="450" Width="800" WindowState="Maximized">
     <Grid>
         <uc:DemoPrjUC/>
     </Grid>

@@ -68,6 +68,62 @@ namespace DemoSubPrj.ViewModels
         }
 
 
+        private string _selectedsearchcomboboxvalue;
+
+        public string SelectedSearchComboBoxValue
+        {
+            get { return _selectedsearchcomboboxvalue; }
+            set {
+
+                int colonIndex = value.IndexOf(':');
+                if (colonIndex != -1 && colonIndex + 1 < value.Length)
+                {
+                    _selectedsearchcomboboxvalue = value.Substring(colonIndex + 1).Trim();
+                }
+                else
+                {
+                    _selectedsearchcomboboxvalue = value; // Fallback to the original value if colon is not found
+                }
+                RaisePropertyChanged(nameof(ComboSelected));
+
+
+            }
+        }
+
+        private string _searchtextbox;
+
+        public string SearchTextBox
+        {
+            get { return _searchtextbox; }
+            set {
+                _searchtextbox = value;
+                RaisePropertyChanged(nameof(SearchTextBox));
+                SearchFun();
+            }
+        }
+
+
+        public void SearchFun()
+        {
+            if (string.IsNullOrEmpty(SearchTextBox))
+            {
+                ItemSrcList = _service.GetDataService();
+            }
+            else
+            {
+                List<SubPrjM> FilteredList = new List<SubPrjM>();
+                foreach (var item in ItemSrcList)
+                {
+                    bool property = item.GetType().GetProperty(SelectedSearchComboBoxValue).GetValue(item, null).ToString().Contains(SearchTextBox);
+                    if (property)
+                    {
+                        FilteredList.Add(item);
+                    }
+                }
+                ItemSrcList = FilteredList;
+            }
+        }
+
         public SubPrjService _service { get; set; }
 
         public ICommand AddBtnCmd => new ActionCommand(AddPop);
