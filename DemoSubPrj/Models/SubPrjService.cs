@@ -14,7 +14,7 @@ namespace DemoSubPrj.Models
         string connectionString;
         public SubPrjService()
         {
-            connectionString = "Data Source=DESKTOP-DHQ0QJ7\\SQLEXPRESS;Initial Catalog=Employee_management_System;Integrated Security=True;Encrypt=false";
+            connectionString = "Data Source=LAPTOP-FSPBQLNL\\SQLEXPRESS01;Initial Catalog=Employee_management_System;Integrated Security=True;Encrypt=false";
 
         }
 
