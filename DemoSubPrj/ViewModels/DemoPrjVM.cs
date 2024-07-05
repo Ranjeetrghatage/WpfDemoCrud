@@ -2,7 +2,9 @@
 using DemoSubPrj.Views;
 using Microsoft.Xaml.Behaviors.Core;
 using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -19,7 +21,97 @@ namespace DemoSubPrj.ViewModels
             ItemSrcList = new List<SubPrjM>();
 
             ItemSrcList =_service.GetDataService();
+            UpdateCurrentTime();
         }
+
+        private string _currentTime;
+        private string _timeleftToday;
+
+        public string CurrentTime
+        {
+            get { return _currentTime; }
+            set
+            {
+                _currentTime = value;
+                RaisePropertyChanged(nameof(CurrentTime));
+            }
+        }
+
+
+        public string TimeLeftToday
+        {
+            get { return _timeleftToday; }
+            set
+            {
+                _timeleftToday = value;
+                RaisePropertyChanged($"{nameof(TimeLeftToday)}");
+            }
+        }
+
+
+
+        private double _hourAngle;
+        private double _minuteAngle;
+        private double _secondAngle;
+
+        public double HourAngle
+        {
+            get { return _hourAngle; }
+            set
+            {
+                _hourAngle = value;
+                RaisePropertyChanged(nameof(HourAngle));
+            }
+        }
+
+        public double MinuteAngle
+        {
+            get { return _minuteAngle; }
+            set
+            {
+                _minuteAngle = value;
+                RaisePropertyChanged(nameof(MinuteAngle));
+            }
+        }
+
+        public double SecondAngle
+        {
+            get { return _secondAngle; }
+            set
+            {
+                _secondAngle = value;
+                RaisePropertyChanged(nameof(SecondAngle));
+            }
+        }
+
+
+
+
+
+        private async void UpdateCurrentTime()
+        {
+            DateTime now = DateTime.Now;
+            DateTime endOfDay = now.Date.AddDays(1);
+            TimeSpan timeLeft = endOfDay - now;
+
+            string formattedCurrentTime = now.ToString("HH:mm:ss.fff tt");
+            string formattedTimeLeft = string.Format("{0:00}:{1:00}:{2:00}.{3:000}",
+                timeLeft.Hours, timeLeft.Minutes, timeLeft.Seconds, timeLeft.Milliseconds);
+
+            CurrentTime = formattedCurrentTime;
+            TimeLeftToday = formattedTimeLeft;
+
+            HourAngle = 360 * ((now.Hour % 12) / 12.0);
+            MinuteAngle = 360 * (now.Minute / 60.0);
+            SecondAngle = 360 * (now.Second / 60.0);
+
+            await Task.Delay(1);
+            UpdateCurrentTime();
+        }
+
+
+
+
         public SubPrjM _models { get; set; }
         public SubPrjService _service { get; set; }
         public AddPop Addpopup { get; set; }
